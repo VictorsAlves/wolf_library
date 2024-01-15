@@ -32,6 +32,7 @@ class BookListPage extends StatelessWidget {
           child: Column(children: [
             SearchComponent(),
             ListView.builder(
+              physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: books.length,
               itemBuilder: (context, index) {
