@@ -23,7 +23,7 @@ final List<Book> books = [
   Book('Comece pelo mais difícil', '', 'https://m.media-amazon.com/images/I/61rvWTjvMeL._SY522_.jpg', 'https://amzn.to/3swZGAb'),
   Book('O monge e o executivo', '', 'https://m.media-amazon.com/images/I/41jyDCYMAlL._SY445_SX342_.jpg', 'https://amzn.to/3ucyRBT'),
   Book('Líderes se servem por último', '', 'https://m.media-amazon.com/images/I/41t0rW658CL._SY445_SX342_.jpg', 'https://amzn.to/40FVDyc'),
-  Book('O clique de 1 bilhão de dólares', '', 'https://img.linkme.bio/img/','https://amzn.to/3QPS8lj'),
+  Book('O clique de 1 bilhão de dólares', '', 'https://m.media-amazon.com/images/I/71s7w9rkWJL._SY522_.jpg','https://amzn.to/3QPS8lj'),
   Book('Uma verdade incomoda', '', 'https://m.media-amazon.com/images/I/91zHKJgfm6S._SY522_.jpg','https://amzn.to/3smOyWC'),
   Book('Isso nunca vai funcionar','','https://m.media-amazon.com/images/I/41C1QC1gY0L._SY445_SX342_.jpg','https://amzn.to/47uiwqe',),
   Book('As cinco linguagens do amor', '','https://m.media-amazon.com/images/I/412lekY6fJL._SY445_SX342_.jpg','https://amzn.to/47LKdvd'),
