@@ -13,8 +13,25 @@ jobs:
       - uses: actions/checkout@v4
       - run: flutter build web
       - uses: FirebaseExtended/action-hosting-deploy@v0
+
+      - name: Setup Flutter
+        uses: actions/checkout@v4
         with:
+          flutter-version: '2.x.x' # Especifique a versão do Flutter
+
+      - name: Install Dependencies
+        run: flutter pub get
+
+      - name: Build Web
+        run: flutter build web
+
+      - name: Deploy to Firebase
+        uses: w9jds/firebase-action@v1
+        with:
+          args: deploy --only hosting
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_WOLF_LIBRARY }}'
           channelId: live
           projectId: wolf-library
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_WOLF_LIBRARY }}
