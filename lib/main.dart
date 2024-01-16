@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'api/book_list.dart';
-import 'component/book_card.dart';
-import 'component/search_component.dart';
+import 'package:wolf_library/page/book_list_page.dart';
+import 'package:wolf_library/page/home_page.dart';
+import 'package:wolf_library/utils/rotas_nomeadas.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,33 +13,14 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Wolf Libary',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.blueGrey,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: BookListPage(),
+      home: HomePage(),
+      initialRoute: homePageRouteName,
+      routes: {
+        bookListPageRouteName: (context) => BookListPage(),
+      },
     );
-  }
-}
-
-class BookListPage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-        appBar: AppBar(
-          title: const Text('Wolf Libary'),
-        ),
-        body: SingleChildScrollView(
-          child: Column(children: [
-            SearchComponent(),
-            ListView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              itemCount: books.length,
-              itemBuilder: (context, index) {
-                return BookCard(book: books[index]);
-              },
-            ),
-          ]),
-        ));
   }
 }
