@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
       home: HomePage(),
       initialRoute: homePageRouteName,
       routes: {
-        bookListPageRouteName: (context) => BookListPage(),
+        bookListPageRouteName: (context) => const BookListPage(),
       },
     );
   }

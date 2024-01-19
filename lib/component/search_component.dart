@@ -1,29 +1,47 @@
 import 'package:flutter/material.dart';
 
 class SearchComponent extends StatefulWidget {
+  final Function(String text) onSearchCompleted;
+
+  SearchComponent(this.onSearchCompleted);
+
   @override
   _SearchComponentState createState() => _SearchComponentState();
 }
 
 class _SearchComponentState extends State<SearchComponent> {
   final TextEditingController _searchController = TextEditingController();
-  String _searchTerm = '';
+
+  @override
+  void initState() {
+    super.initState();
+
+    // Ouve as mudanças no campo de texto
+    _searchController.addListener(() {
+      _notify(_searchController.text);
+    });
+  }
+
+  void _notify(String searchTerm) {
+    // Chama a função de callback diretamente sem setState
+    widget.onSearchCompleted(searchTerm);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         Container(
-          margin: EdgeInsets.all(10), // Espaçamento ao redor do campo de pesquisa
+          margin: EdgeInsets.all(10),
           decoration: BoxDecoration(
-            color: Colors.white, // Cor de fundo
-            borderRadius: BorderRadius.circular(30), // Cantos arredondados
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(30),
             boxShadow: [
               BoxShadow(
-                color: Colors.grey.withOpacity(0.5), // Sombra com transparência
+                color: Colors.grey.withOpacity(0.5),
                 spreadRadius: 2,
                 blurRadius: 7,
-                offset: Offset(0, 3), // Posição da sombra
+                offset: Offset(0, 3),
               ),
             ],
           ),
@@ -32,25 +50,22 @@ class _SearchComponentState extends State<SearchComponent> {
             decoration: InputDecoration(
               labelText: 'Pesquisar',
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(30), // Bordas arredondadas
-                borderSide: BorderSide.none, // Sem borda visível
+                borderRadius: BorderRadius.circular(30),
+                borderSide: BorderSide.none,
               ),
               filled: true,
-              fillColor: Colors.white, // Cor de preenchimento
+              fillColor: Colors.white,
               suffixIcon: IconButton(
                 icon: Icon(Icons.search),
                 onPressed: () {
-                  setState(() {
-                    _searchTerm = _searchController.text;
-                  });
-                  // Implemente a lógica de pesquisa aqui
+                  // Chama diretamente sem setState
+                  _notify(_searchController.text);
                 },
               ),
             ),
           ),
         ),
-        // Adicione botões ou widgets de filtro aqui
-        // ...
+        // Outros widgets...
       ],
     );
   }
@@ -59,4 +74,5 @@ class _SearchComponentState extends State<SearchComponent> {
   void dispose() {
     _searchController.dispose();
     super.dispose();
-  }}
+  }
+}
